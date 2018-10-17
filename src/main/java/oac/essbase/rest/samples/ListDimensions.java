@@ -1,5 +1,5 @@
 /*
- * File: ListCubes.java
+ * File: ListDimensions.java
  */
 package oac.essbase.rest.samples;
 
@@ -18,24 +18,25 @@ import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
 /*
- * Lists all cubes in an application.
+ * Lists all dimensions in a cube.
  * 
  * @author Srin Ranga - https://www.linkedin.com/in/sriniranga 
  */
-public class ListCubes {
+public class ListDimensions {
 	
 	public static void main(String[] args) {
 		try {
-			String appName = "Sample";  // TODO: Change this to your application name
-			System.out.printf("Listing cubes in application %s...", appName);
+			String appName = "Sample", cubeName = "Basic";  // TODO: Change this to your application and cube name
+			
+			System.out.printf("Listing dimensions in cube %s/%s...", appName, cubeName);
 			
 			// Perform REST request to get cubes
 			Client client = ClientBuilder.newClient(new ClientConfig());
 			client.register(HttpAuthenticationFeature.basic(LoginDetails.getUserName(), LoginDetails.getPassword()));
 			WebTarget target = client.target(UriBuilder.fromUri(LoginDetails.getEssbaseRestURI()).build());
-			Response response = target.path("applications").path(appName).path("databases").request(MediaType.APPLICATION_JSON).get(Response.class);
+			Response response = target.path("applications").path(appName).path("databases").path(cubeName).path("dimensions").request(MediaType.APPLICATION_JSON).get(Response.class);
 			
-			// If Success, print cube names, Else, print error code
+			// If Success, print dimension names, Else, print error code
 			if (response.getStatus() == 200) { 
 				DocumentContext docCxt = JsonPath.parse(response.readEntity(String.class));
 				JSONArray items = docCxt.read("$.items[*].name");
