@@ -26,13 +26,22 @@ public class ListCubes {
 	
 	public static void main(String[] args) {
 		try {
-			String appName = "Sample";  // TODO: Change this to your application name
-			System.out.printf("Listing cubes in application %s...", appName);
-			
-			// Perform REST request to get cubes
 			Client client = ClientBuilder.newClient(new ClientConfig());
 			client.register(HttpAuthenticationFeature.basic(LoginDetails.getUserName(), LoginDetails.getPassword()));
 			WebTarget target = client.target(UriBuilder.fromUri(LoginDetails.getEssbaseRestURI()).build());
+			
+			listCubes(target);
+		} catch (Throwable x) {
+			System.err.println("Error: " + x.getMessage());
+		}
+	}
+	
+	public static void listCubes(WebTarget target) throws Exception {
+		try {
+			String appName = "Sample";  // TODO: Change this to your application name
+			System.out.printf("\nListing cubes in application %s...\n", appName);
+			
+			// Perform REST request to get cubes
 			Response response = target.path("applications").path(appName).path("databases").request(MediaType.APPLICATION_JSON).get(Response.class);
 			
 			// If Success, print cube names, Else, print error code

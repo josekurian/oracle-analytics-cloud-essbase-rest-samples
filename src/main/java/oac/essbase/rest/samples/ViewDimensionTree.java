@@ -24,15 +24,23 @@ import net.minidev.json.JSONArray;
  */
 public class ViewDimensionTree {
 	// TODO: Change following variables to your application, cube and dimension names
-	private static String appName = "Sample", cubeName = "Basic", dimensionName = "Year";  
-
-    public static void main(String[] args) {
+	private static String appName = "Sample", cubeName = "Basic", dimensionName = "Year"; 
+	
+	public static void main(String[] args) {
 		try {
-			System.out.printf("View dimension tree for %s/%s/%s...\n\n", appName, cubeName, dimensionName);
-			
 			Client client = ClientBuilder.newClient(new ClientConfig());
 			client.register(HttpAuthenticationFeature.basic(LoginDetails.getUserName(), LoginDetails.getPassword()));
 			WebTarget target = client.target(UriBuilder.fromUri(LoginDetails.getEssbaseRestURI()).build());
+			
+			viewDimensionTree(target);
+		} catch (Throwable x) {
+			System.err.println("Error: " + x.getMessage());
+		}
+	}
+	
+	public static void viewDimensionTree(WebTarget target) throws Exception {
+		try {
+			System.out.printf("\nView dimension tree for %s/%s/%s...\n\n", appName, cubeName, dimensionName);
 			
 			System.out.println(dimensionName);
 			printDescendants(target, dimensionName, "\t");

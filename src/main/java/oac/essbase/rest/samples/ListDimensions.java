@@ -26,14 +26,23 @@ public class ListDimensions {
 	
 	public static void main(String[] args) {
 		try {
-			String appName = "Sample", cubeName = "Basic";  // TODO: Change this to your application and cube name
-			
-			System.out.printf("Listing dimensions in cube %s/%s...", appName, cubeName);
-			
-			// Perform REST request to get cubes
 			Client client = ClientBuilder.newClient(new ClientConfig());
 			client.register(HttpAuthenticationFeature.basic(LoginDetails.getUserName(), LoginDetails.getPassword()));
 			WebTarget target = client.target(UriBuilder.fromUri(LoginDetails.getEssbaseRestURI()).build());
+			
+			listDimensions(target);
+		} catch (Throwable x) {
+			System.err.println("Error: " + x.getMessage());
+		}
+	}
+	
+	public static void listDimensions(WebTarget target) throws Exception {
+		try {
+			String appName = "Sample", cubeName = "Basic";  // TODO: Change this to your application and cube name
+			
+			System.out.printf("\nListing dimensions in cube %s/%s...\n", appName, cubeName);
+			
+			// Perform REST request to get cubes
 			Response response = target.path("applications").path(appName).path("databases").path(cubeName).path("dimensions").request(MediaType.APPLICATION_JSON).get(Response.class);
 			
 			// If Success, print dimension names, Else, print error code

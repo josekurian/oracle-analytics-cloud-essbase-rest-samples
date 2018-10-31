@@ -26,12 +26,21 @@ public class ListApplications {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println("Listing applications...");
-			
-			// Perform REST request to get applications
 			Client client = ClientBuilder.newClient(new ClientConfig());
 			client.register(HttpAuthenticationFeature.basic(LoginDetails.getUserName(), LoginDetails.getPassword()));
 			WebTarget target = client.target(UriBuilder.fromUri(LoginDetails.getEssbaseRestURI()).build());
+			
+			listApplications(target);
+		} catch (Throwable x) {
+			System.err.println("Error: " + x.getMessage());
+		}
+	}
+	
+	public static void listApplications(WebTarget target) throws Exception {
+		try {
+			System.out.println("\nListing applications...");
+			
+			// Perform REST request to get applications
 			Response response = target.path("applications").request(MediaType.APPLICATION_JSON).get(Response.class);
 			
 			// If Success, print application names, Else, print error code
@@ -41,9 +50,10 @@ public class ListApplications {
 				System.out.println(items.toString());
 			} else {
 				System.err.println("HTTP Status code: " + response.getStatus());
+				
 			}
 		} catch (Exception x) {
-			System.err.println("Error: " + x.getMessage());
+			throw new Exception("Error: " + x.getMessage());
 		}
 	}
 }
