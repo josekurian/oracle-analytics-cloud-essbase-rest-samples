@@ -23,6 +23,8 @@ import net.minidev.json.JSONArray;
  * @author Srin Ranga - https://www.linkedin.com/in/sriniranga 
  */
 public class ListCubes {
+	// TODO: Change appName to your application name
+	private static String appName = "Sample"; 
 	
 	public static void main(String[] args) {
 		try {
@@ -38,7 +40,6 @@ public class ListCubes {
 	
 	public static void listCubes(WebTarget target) throws Exception {
 		try {
-			String appName = "Sample";  // TODO: Change this to your application name
 			System.out.printf("\nListing cubes in application %s...\n", appName);
 			
 			// Perform REST request to get cubes

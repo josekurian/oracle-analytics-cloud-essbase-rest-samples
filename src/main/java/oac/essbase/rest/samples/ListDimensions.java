@@ -23,6 +23,8 @@ import net.minidev.json.JSONArray;
  * @author Srin Ranga - https://www.linkedin.com/in/sriniranga 
  */
 public class ListDimensions {
+	// TODO: Change appName and cubeName to your application and cube name
+	private static String appName = "Sample", cubeName = "Basic"; 
 	
 	public static void main(String[] args) {
 		try {
@@ -37,9 +39,7 @@ public class ListDimensions {
 	}
 	
 	public static void listDimensions(WebTarget target) throws Exception {
-		try {
-			String appName = "Sample", cubeName = "Basic";  // TODO: Change this to your application and cube name
-			
+		try {			
 			System.out.printf("\nListing dimensions in cube %s/%s...\n", appName, cubeName);
 			
 			// Perform REST request to get cubes
