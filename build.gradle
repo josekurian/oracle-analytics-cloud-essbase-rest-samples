@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-mainClassName = 'RunSamples'
+mainClassName = 'oac.essbase.rest.samples.RunSamples'
 
 repositories {
     jcenter()
