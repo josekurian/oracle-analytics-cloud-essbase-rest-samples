@@ -20,7 +20,7 @@ import net.minidev.json.JSONArray;
 /*
  * Lists all dimensions in a cube.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga 
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga 
  */
 public class ListDimensions {
 	// TODO: Change appName and cubeName to your application and cube name

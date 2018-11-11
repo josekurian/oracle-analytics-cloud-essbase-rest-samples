@@ -14,7 +14,7 @@ import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 /*
  * Runs Samples.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga
  */
 public class RunSamples {
 	

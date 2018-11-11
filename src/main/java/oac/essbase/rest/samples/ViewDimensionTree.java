@@ -20,7 +20,7 @@ import net.minidev.json.JSONArray;
 /*
  * View a dimension tree.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga
  */
 public class ViewDimensionTree {
 	// TODO: Change following variables to your application, cube and dimension names

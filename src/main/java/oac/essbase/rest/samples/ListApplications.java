@@ -20,7 +20,7 @@ import net.minidev.json.JSONArray;
 /*
  * Lists all applications.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga
  */
 public class ListApplications {
 	

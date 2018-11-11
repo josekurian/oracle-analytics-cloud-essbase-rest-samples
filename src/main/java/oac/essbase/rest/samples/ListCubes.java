@@ -20,7 +20,7 @@ import net.minidev.json.JSONArray;
 /*
  * Lists all cubes in an application.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga 
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga 
  */
 public class ListCubes {
 	// TODO: Change appName to your application name

@@ -6,7 +6,7 @@ package oac.essbase.rest.samples;
 /*
  * Used by all other classes to get OAC Essbase login details.
  * 
- * @author Srin Ranga - https://www.linkedin.com/in/sriniranga
+ * @author Srini Ranga - https://www.linkedin.com/in/sriniranga
  */
 public class LoginDetails {
 	// 
